@@ -1,9 +1,11 @@
-# Dotnet 6 | C# webapp | Sammple Webapp | AWS IIS Deployment
+# Dotnet 6 | C# webapp | Github Actions Workflow CI | AWS IIS Deployment
 
 
 ## Build and Dev
 ```sh
+dotnet restore
 dotnet build
+dotnet run
 ```
 
 
