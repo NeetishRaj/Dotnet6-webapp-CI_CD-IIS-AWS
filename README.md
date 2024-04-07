@@ -23,3 +23,8 @@ dotnet new webapp
 # dotnet new gitignroe
 
 ```
+
+## IIS Setup
+
+**NOTE**: Make sure hosting bundle is installed https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
