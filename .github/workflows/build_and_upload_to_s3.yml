@@ -27,4 +27,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3
-        run: aws s3 sync --delete ./deploy_app.zip ${{ secrets.AWS_S3_URI }}
+        run: aws s3 cp ./deploy_app.zip ${{ secrets.AWS_S3_URI }}
