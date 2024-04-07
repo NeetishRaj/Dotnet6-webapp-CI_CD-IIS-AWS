@@ -1,0 +1,28 @@
+name: build and upload to S3
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup dotnet latest v6.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+      - name: Display dotnet version
+        run: dotnet --version
+      - name: publish dotnet project to publish folder
+        run: dotnet publish -o ./publish
+      - name: create a zip of publish folder
+        run: zip -r deploy_app.zip publish
+      - name: Upload to AWS S3
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          source_dir: 'publish'

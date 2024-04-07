@@ -28,3 +28,7 @@ dotnet new webapp
 
 **NOTE**: Make sure hosting bundle is installed https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
+
+## Github workflows for Dotnet
+
+https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
