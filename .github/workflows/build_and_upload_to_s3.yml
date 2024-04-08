@@ -9,16 +9,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup dotnet latest v6.x
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.x'
+
       - name: Display dotnet version
         run: dotnet --version
-      - name: publish dotnet project to publish folder
-        run: dotnet publish -o ./publish
-      - name: create a zip of publish folder
-        run: zip -r deploy_app.zip publish
+
+      # - name: publish dotnet project to publish folder
+      #   run: dotnet publish -o ./publish
+      
+      - name: create a zip of root folder
+        run: zip -r deploy_app.zip .
+
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:

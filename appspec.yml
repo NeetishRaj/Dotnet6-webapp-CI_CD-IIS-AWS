@@ -1,8 +1,8 @@
 version: 0.0
 os: windows
 files:
-  - source: .  publish\*
-    destination: C:\prod\publish\  # Adjust destination directory
+  - source: ./deploy_app/*
+    destination: C:\prod\source\  # Adjust destination directory
 
 hooks:
   ApplicationStop:
