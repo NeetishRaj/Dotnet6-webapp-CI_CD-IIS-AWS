@@ -112,6 +112,9 @@ Also create a `publish` folder in root bucket. this folder will be used to store
 
 ### Setup AWS CodeDeploy
 
+Create a deployment application
+
+While setting up deployment settings atttach `AWSCodeDeployRole` to the deployment group
 
 ### Setup AWS Sytems Manager
 
