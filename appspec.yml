@@ -1,0 +1,21 @@
+version: 0.0
+os: windows
+files:
+  - source: .  publish\*
+    destination: C:\prod\publish\  # Adjust destination directory
+
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.ps1  # Path to a PowerShell script to stop the application (if necessary)
+      timeout: 300  # Timeout value in seconds
+
+  BeforeInstall:
+    - location: scripts/cleanup.ps1  # Path to a PowerShell script to clean up previous installation (if necessary)
+
+  AfterInstall:
+    - location: scripts/start_server.ps1  # Path to a PowerShell script to start the application
+      timeout: 300  # Timeout value in seconds
+
+  ApplicationStart:
+    - location: scripts/start_other_services.ps1  # Path to a PowerShell script to run dotnet run
+      timeout: 300  # Timeout value in seconds
