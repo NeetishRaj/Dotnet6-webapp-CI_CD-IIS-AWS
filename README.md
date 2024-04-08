@@ -60,8 +60,19 @@ dotnet new webapp
 
 #### Dotnet server and IIS Setup
 
-**NOTE**: Make sure hosting bundle is installed https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+**NOTE**: Make sure dotnet SDK and hosting bundle is installed https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
+target project folders
+```
+mkdir c:/prod
+git clone https://github.com/NeetishRaj/Dotnet6-webapp-CI_CD-IIS-AWS.git
+cd Dotnet6-webapp-CI_CD-IIS-AWS
+dotnet publish -o ../publish
+```
+
+Configure the Physical Path bsaic settings for IIS site to `C:/prod/publish`, restart server and check out on localhost
+
+Install git for windows
 
 #### Systems Manager and CodeDeploy agent
 
