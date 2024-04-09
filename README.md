@@ -116,6 +116,8 @@ Create a deployment application
 
 While setting up deployment settings atttach `AWSCodeDeployRole` to the deployment group
 
+while picking deployment configurations, stick with All at once https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html
+
 ### Setup AWS Sytems Manager
 
 
