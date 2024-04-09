@@ -17,5 +17,5 @@ hooks:
       timeout: 300  # Timeout value in seconds
 
   ApplicationStart:
-    - location: scripts/start_other_services.ps1  # Path to a PowerShell script to run dotnet run
+    - location: scripts/start_other_services.ps1  
       timeout: 300  # Timeout value in seconds

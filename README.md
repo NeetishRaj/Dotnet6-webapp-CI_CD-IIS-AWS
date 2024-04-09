@@ -118,9 +118,12 @@ While setting up deployment settings atttach `AWSCodeDeployRole` to the deployme
 
 while picking deployment configurations, stick with All at once https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-configurations.html
 
+deploy hooks and corresponding scripts are created in `appspec.yaml` file 
+for more on hooks https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html
+
 ### Setup AWS Sytems Manager
 
-
+make sure the EC2 has the fullssmaccess policy to work seamlessly with the codedeploy agent.
 
 
 ### Github workflows for Dotnet
