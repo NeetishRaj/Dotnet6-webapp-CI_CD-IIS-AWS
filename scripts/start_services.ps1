@@ -1,8 +1,11 @@
+$logFilePath = "C:\test\log.txt"
 
 cd c:/prod/source/
 dotnet publish -o c:/prod/publish
+Add-Content -Path $logFilePath -Value "started dotnet publish"
 
 Start-WebSite -Name "Default Web Site"
+Add-Content -Path $logFilePath -Value "Started website server"
 
 # Perform database migrations
 
@@ -11,8 +14,4 @@ Start-WebSite -Name "Default Web Site"
 # Send the teams notifications.
 
 
-# setup a sample log
-$filePath = "C:\test\log.txt"
-$content = "This is a log from CodeDeploy script named 'start_other_services.ps1'"
 
-Set-Content -Path $filePath -Value $content -force
