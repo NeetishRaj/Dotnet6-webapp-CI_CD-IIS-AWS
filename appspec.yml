@@ -11,6 +11,7 @@ hooks:
 
   BeforeInstall:
     - location: scripts/cleanup.ps1  # Path to a PowerShell script to clean up previous installation (if necessary)
+      timeout: 300  # Timeout value in seconds
 
   ApplicationStart:
     - location: scripts/start_services.ps1  
