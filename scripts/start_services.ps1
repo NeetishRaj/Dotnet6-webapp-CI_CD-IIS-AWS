@@ -1,5 +1,8 @@
+$transcriptLogFilePath = "C:\test\transcript_log.txt"
 $logFilePath = "C:\test\log.txt"
-Start-Transcript -path $logFilePath -append
+
+Start-Transcript -path $transcriptLogFilePath -append
+
 cd c:/prod/source/
 dotnet publish -o c:/prod/publish
 Add-Content -Path $logFilePath -Value "started dotnet publish"

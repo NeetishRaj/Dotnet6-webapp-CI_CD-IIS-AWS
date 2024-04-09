@@ -1,9 +1,11 @@
 # setup a sample log
+$transcriptLogFilePath = "C:\test\transcript_log.txt"
 $logFilePath = "C:\test\log.txt"
-$content = "starting deploy operations"
-Set-Content -Path $logFilePath -Value $content -force
 
-Start-Transcript -path $logFilePath -append
+Start-Transcript -path $transcriptLogFilePath -append
+
+Set-Content -Path $logFilePath -Value "starting deploy operations" -force
+
 
 Stop-WebSite -Name "Default Web Site"
 Add-Content -Path $logFilePath -Value "Stopped website server!"
