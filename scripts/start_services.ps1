@@ -1,7 +1,7 @@
 $logFilePath = "C:\test\log.txt"
 
 cd c:/prod/source/
-dotnet publish -o c:/prod/publish
+powershell.exe -Command dotnet publish -o c:/prod/publish
 Add-Content -Path $logFilePath -Value "started dotnet publish"
 
 Start-WebSite -Name "Default Web Site"
