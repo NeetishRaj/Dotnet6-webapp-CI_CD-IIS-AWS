@@ -8,11 +8,14 @@ hooks:
   ApplicationStop:
     - location: scripts/stop_server.ps1  # Path to a PowerShell script to stop the application (if necessary)
       timeout: 300  # Timeout value in seconds
+      runas: administrator
 
   BeforeInstall:
     - location: scripts/cleanup.ps1  # Path to a PowerShell script to clean up previous installation (if necessary)
       timeout: 300  # Timeout value in seconds
+      runas: administrator
 
   ApplicationStart:
     - location: scripts/start_services.ps1  
       timeout: 300  # Timeout value in seconds
+      runas: administrator
