@@ -20,7 +20,10 @@ jobs:
 
       # - name: publish dotnet project to publish folder
       #   run: dotnet publish -o ./publish
-      
+
+      - name: Remove .git folder from zip, (unwanted)
+        run: rm -rf .git
+
       - name: create a zip of root folder
         run: zip -r deploy_app.zip .
 
@@ -32,5 +35,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Deploy to S3
+      - name: Push revision to S3
         run: aws s3 cp ./deploy_app.zip ${{ secrets.AWS_S3_URI }}
+
+      - name: Create a new deployment in AWS CodeDeploy
+        run: |
+          aws deploy create-deployment \
+            --application-name deploy-from-s3-to-windows-server-ec2 \ 
+            --deployment-config-name CodeDeployDefault.OneAtATime \ 
+            --deployment-group-name s3-windows-server-ec2-deploy \ 
+            --s3-location bucket=windows-server-code-deploy-from-github,key=publish/deploy_app.zip,bundleType=zip
