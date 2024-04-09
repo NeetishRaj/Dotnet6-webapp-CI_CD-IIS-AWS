@@ -39,9 +39,4 @@ jobs:
         run: aws s3 cp ./deploy_app.zip ${{ secrets.AWS_S3_URI }}
 
       - name: Create a new deployment in AWS CodeDeploy
-        run: |
-          aws deploy create-deployment \
-            --application-name deploy-from-s3-to-windows-server-ec2 \ 
-            --deployment-config-name CodeDeployDefault.OneAtATime \ 
-            --deployment-group-name s3-windows-server-ec2-deploy \ 
-            --s3-location bucket=windows-server-code-deploy-from-github,key=publish/deploy_app.zip,bundleType=zip
+        run: aws deploy create-deployment --application-name deploy-from-s3-to-windows-server-ec2 --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name s3-windows-server-ec2-deploy --s3-location bucket=windows-server-code-deploy-from-github,key=publish/deploy_app.zip,bundleType=zip
