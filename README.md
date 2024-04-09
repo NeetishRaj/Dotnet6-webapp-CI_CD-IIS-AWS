@@ -15,16 +15,15 @@ We have a Github repo and a dotnet webapp hosted on windows server IIS (AWS EC2)
 
 ### Here are the steps invoved in the process
 
-**Step 0:** Perform one-time CodeDeploy agent installation, Create SSM document for CodeDeploy, Setup S3 write access credentials for Github workflow Agent  
+**Step 0:** Perform one-time CodeDeploy agent installation via SSM distributions, Setup S3 write access & codedeployer credentials for Github workflow Agent  
 
 **Step 1:** Triggered build, zip and code push to AWS S3 from Github workflows. Steps in workflow yaml
 
-**Step 2:** S3 Update triggers a CodeDeploy via CodeDeploy agent in the windows server.
+**Step 2:** Create a AWS CodeDeploy deployment using the CLI command in workflow.
 
 **Step 3:** Code deploy agent fethcing the S3 code, unzipping it, running the app and relevant services, and restarting the IIS site.
- 
 
-**Step 4:** Code Deploy agent sends the teams group notifications 
+**Step 4:** Code Deploy agent runs all the pre/post installation scripts for cleanup, server updates etc. 
 
 **Step 5:** Team chat displays the Deploy status.
 
@@ -121,6 +120,9 @@ while picking deployment configurations, stick with All at once https://docs.aws
 deploy hooks and corresponding scripts are created in `appspec.yaml` file 
 for more on hooks https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html
 
+
+
+
 ### Setup AWS Sytems Manager
 
 make sure the EC2 has the fullssmaccess policy to work seamlessly with the codedeploy agent.
@@ -131,6 +133,8 @@ make sure the EC2 has the fullssmaccess policy to work seamlessly with the coded
 https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
 Workflow will need access to S3 to push the build zip file, therefore create an AWS CLI credential with least privilege (only write access to select bucket) and update the credentials in Github repository secrets for Actions.
+
+Also attach `AWSCodeDeployDeployerAccess` policy for github workflow to create deployments.
 
 ```
 AWS_KEY_ID
